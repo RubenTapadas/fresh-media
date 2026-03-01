@@ -1,0 +1,62 @@
+@let entry = info();
+<div
+  (click)="select.emit()"
+  class="card-container"
+  [style.--score]="entry?.score"
+  [style.--image-url]="'url(' + (entry?.image_url || '') + ')'"
+  [style.--type-image]="'var(--icon-' + (entry?.type ?? 'movie') + ')'"
+>
+  <div class="card" [class.has-action]="hasAction()">
+    @if (!entry?.image_url) {
+      <div class="title-img">
+        <span>{{ entry?.title || 'No title' }}</span>
+      </div>
+    }
+
+    <div class="type-image"></div>
+
+    <div class="actions permanent-actions">
+      @if (entry?.type === 'series' && entry?.total_episodes && !entry?.completed_date) {
+        <div class="episodes">
+          @if (hasAction() && entry?.current_episode !== 0) {
+            <button type="button" (click)="episodeStep.emit(-1); $event.stopPropagation()"></button>
+          }
+          <span>{{ entry?.current_episode }} / {{ entry?.total_episodes }}</span>
+          @if (hasAction() && entry?.current_episode !== entry?.total_episodes) {
+            <button type="button" (click)="episodeStep.emit(1); $event.stopPropagation()"></button>
+          }
+        </div>
+      }
+    </div>
+
+    @if (hasAction()) {
+      <div class="actions">
+        @if (!entry?.completed_date) {
+          @if (entry?.type !== 'series') {
+            <button
+              class="action-complete"
+              type="button"
+              (click)="complete.emit(); $event.stopPropagation()"
+            >
+              Complete
+            </button>
+          }
+        } @else {
+          <button
+            class="action-uncomplete"
+            type="button"
+            (click)="uncomplete.emit(); $event.stopPropagation()"
+          >
+            Undo
+          </button>
+        }
+      </div>
+      <button
+        class="card-delete"
+        type="button"
+        (click)="delete.emit(); $event.stopPropagation()"
+      ></button>
+    }
+    <div class="card-score">{{ entry?.score | number: '1.1-1' }}</div>
+  </div>
+</div>

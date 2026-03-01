@@ -1,0 +1,153 @@
+@if (user()) {
+  <div class="planned-section">
+    @if (planned().length) {
+      <div class="planned-grid">
+        @for (entry of planned(); track entry.id) {
+          <app-card
+            [info]="entry"
+            (delete)="actionDelete(entry?.id)"
+            (complete)="actionComplete(entry?.id)"
+            (uncomplete)="actionUncomplete(entry?.id)"
+            (episodeStep)="actionEpisodeStep($event, entry?.id)"
+            (select)="selected.set(entry); showPanel.set(true)"
+          />
+        }
+      </div>
+    }
+  </div>
+
+  <div class="completed-section">
+    @for (group of groupedCompleted(); track group.year) {
+      <div class="completed-group">
+        @if (group.yearChanged) {
+          <div class="year-separator">
+            <span>{{ group.year }}</span>
+            <div class="type-quantity-list">
+              @for (type of group.yearTypeCount | keyvalue; track type.key) {
+                <div class="type-quantity">
+                  <div class="icon" [style.--icon]="'var(--icon-' + type.key + ')'"></div>
+                  <span>{{ type.value }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        }
+        <div class="separator">
+          <h3>{{ group.month }} {{ group.year }}</h3>
+
+          <div class="type-quantity-list">
+            @for (type of group.monthTypeCount | keyvalue; track type.key) {
+              <div class="type-quantity">
+                <div class="icon" [style.--icon]="'var(--icon-' + type.key + ')'"></div>
+                <span>{{ type.value }}</span>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="completed-grid">
+          @for (entry of group.entries; track entry.id) {
+            <app-card
+              [info]="entry"
+              (delete)="actionDelete(entry?.id)"
+              (complete)="actionComplete(entry?.id)"
+              (uncomplete)="actionUncomplete(entry?.id)"
+              (episodeStep)="actionEpisodeStep($event, entry?.id)"
+              (select)="selected.set(entry); showPanel.set(true)"
+            />
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <button
+    class="add-entry"
+    [class.active]="!showPanel()"
+    (click)="showPanel.set(true); selected.set({})"
+  >
+    Add Entry
+  </button>
+
+  <div class="manage-entry" [class.active]="showPanel()">
+    <div class="manage-entry-card">
+      <app-card [info]="selected()" [hasAction]="false" />
+    </div>
+    <div class="form">
+      <label>Title</label>
+      <input
+        class="title-input"
+        [value]="selected()?.title || ''"
+        (input)="updateSelected('title', $any($event.target).value)"
+      />
+
+      <label>Type</label>
+      <select
+        [value]="selected()?.type || 'movie'"
+        (change)="updateSelected('type', $any($event.target).value)"
+      >
+        <option value="movie">Movie</option>
+        <option value="series">Series</option>
+        <option value="book">Book</option>
+        <option value="game">Game</option>
+      </select>
+
+      <label>Image</label>
+      <input
+        type="text"
+        class="image-input"
+        [value]="selected()?.image_url || ''"
+        (input)="updateSelected('image_url', $any($event.target).value)"
+      />
+
+      @if (selected()?.type === 'series') {
+        <label class="episode-label"
+          >Current <br />
+          Episode</label
+        >
+        <input
+          type="number"
+          min="0"
+          max="300"
+          [value]="selected()?.current_episode ?? 0"
+          (input)="updateSelected('current_episode', $any($event.target).value)"
+        />
+        <label class="episode-label"
+          >Number of <br />
+          Episodes</label
+        >
+        <input
+          type="number"
+          min="1"
+          max="300"
+          [value]="selected()?.total_episodes ?? 1"
+          (input)="updateSelected('total_episodes', $any($event.target).value)"
+        />
+      }
+
+      <label>Score</label>
+      <input
+        type="number"
+        min="0"
+        max="10"
+        [value]="selected()?.score"
+        (input)="updateSelected('score', $any($event.target).value)"
+      />
+      <label class="date-label">Completed <br />Date</label>
+      <input
+        type="date"
+        class="date-input"
+        [value]="selected()?.completed_date | date: 'yyyy-MM-dd'"
+        (input)="updateSelected('completed_date', $any($event.target).value)"
+      />
+    </div>
+    <div class="actions">
+      <button (click)="actionCancel()">Cancel</button>
+      @if (selected()?.id) {
+        <button class="delete-button" (click)="actionDelete(selected()?.id)">Delete</button>
+      }
+      <button class="create-button" (click)="actionEdit()">
+        {{ selected()?.id ? 'Edit' : 'Create' }}
+      </button>
+    </div>
+  </div>
+}
