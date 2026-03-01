@@ -1,0 +1,109 @@
+{
+  "configVersion": 1,
+  "timestamp": 1772342612111,
+  "index": "/fresh-media/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/fresh-media/favicon.ico",
+        "/fresh-media/index.html",
+        "/fresh-media/main-TVFUJPDK.js",
+        "/fresh-media/manifest.webmanifest",
+        "/fresh-media/styles-IJDURXT7.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/fresh-media/bird.png",
+        "/fresh-media/book.svg",
+        "/fresh-media/delete.svg",
+        "/fresh-media/download.svg",
+        "/fresh-media/game.svg",
+        "/fresh-media/good_deal.gif",
+        "/fresh-media/icons/icon-128x128.png",
+        "/fresh-media/icons/icon-144x144.png",
+        "/fresh-media/icons/icon-152x152.png",
+        "/fresh-media/icons/icon-192x192.png",
+        "/fresh-media/icons/icon-256x256.png",
+        "/fresh-media/icons/icon-384x384.png",
+        "/fresh-media/icons/icon-48x48.png",
+        "/fresh-media/icons/icon-512x512.png",
+        "/fresh-media/icons/icon-72x72.png",
+        "/fresh-media/icons/icon-96x96.png",
+        "/fresh-media/media/book-XX5S4GVE.svg",
+        "/fresh-media/media/delete-QNNBWPLS.svg",
+        "/fresh-media/media/game-4WTAWKXL.svg",
+        "/fresh-media/media/movie-N6XYZ3KR.svg",
+        "/fresh-media/media/series-LDRXW5XT.svg",
+        "/fresh-media/movie.svg",
+        "/fresh-media/play_lesson.svg",
+        "/fresh-media/series.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/fresh-media/bird.png": "bfa8ae6289c5a963da3e774e43f79d28d2265562",
+    "/fresh-media/book.svg": "387c43cd5f0b6db0f7dc42744b25cb03a62e9c64",
+    "/fresh-media/delete.svg": "fd77d9dd4a978e7fa2ab935ef371ce47e30fc284",
+    "/fresh-media/download.svg": "682884fd5010ee1b390ea7250ff4283e46423428",
+    "/fresh-media/favicon.ico": "30470a21e6eb1ed3c870ccd9388d63c010a25c6d",
+    "/fresh-media/game.svg": "a34726af15c93c2d49bfa8ce682ceae30b8d0bc7",
+    "/fresh-media/good_deal.gif": "ad3b441a229dd8f689da6615b5803629c2251713",
+    "/fresh-media/icons/icon-128x128.png": "5b895f59b1d1e2bec6b19ceb473108d6a7a84a29",
+    "/fresh-media/icons/icon-144x144.png": "dc7c0ecd0924f6299a898bb9493ff6f4344fca91",
+    "/fresh-media/icons/icon-152x152.png": "4dea50b215cf26d4ba629a23bd6580d17a1b348f",
+    "/fresh-media/icons/icon-192x192.png": "c57a7cbae93096e1fadfef796b1024c2690fdb5e",
+    "/fresh-media/icons/icon-256x256.png": "3cd0173dacc6b1b4be42bb28f26fd43c8fb112e1",
+    "/fresh-media/icons/icon-384x384.png": "9f7b7d8ad2205e691a4ce4442b1197b51b2f1089",
+    "/fresh-media/icons/icon-48x48.png": "a93f2b53ed85725db4ba43e6ccc1cd9a20914015",
+    "/fresh-media/icons/icon-512x512.png": "e0dee9639de40f3eb21de64f405bc86a895c5a50",
+    "/fresh-media/icons/icon-72x72.png": "21337a3bbc3d3c3859dd9cad92862ec82ee41287",
+    "/fresh-media/icons/icon-96x96.png": "5ad05fab811c4359c6c09d7831e3e9df220c3cda",
+    "/fresh-media/index.html": "2debf9667f0f15b999979f9a243879ee2a073370",
+    "/fresh-media/main-TVFUJPDK.js": "0f7d88512fa4b1ca55d37011dc14b05e5d9c2460",
+    "/fresh-media/manifest.webmanifest": "7bbacd4dcf5a1956cd2a66346cd262704234eee6",
+    "/fresh-media/media/book-XX5S4GVE.svg": "387c43cd5f0b6db0f7dc42744b25cb03a62e9c64",
+    "/fresh-media/media/delete-QNNBWPLS.svg": "fd77d9dd4a978e7fa2ab935ef371ce47e30fc284",
+    "/fresh-media/media/game-4WTAWKXL.svg": "a34726af15c93c2d49bfa8ce682ceae30b8d0bc7",
+    "/fresh-media/media/movie-N6XYZ3KR.svg": "0d5650e64953c21b417434127f5b7a0f41aebd49",
+    "/fresh-media/media/series-LDRXW5XT.svg": "3b2e654274d12c34f008e91b95b6c051dd100103",
+    "/fresh-media/movie.svg": "0d5650e64953c21b417434127f5b7a0f41aebd49",
+    "/fresh-media/play_lesson.svg": "5f88a2be23063de471698de430bcc725b6cdf9da",
+    "/fresh-media/series.svg": "3b2e654274d12c34f008e91b95b6c051dd100103",
+    "/fresh-media/styles-IJDURXT7.css": "44fbc527c048485fa36c4f3dd7aff73e5a7675ca"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
