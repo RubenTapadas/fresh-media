@@ -1,0 +1,57 @@
+:host {
+  display: contents;
+}
+
+.login-message {
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10vw;
+  font-weight: 700;
+  flex: 1;
+  justify-content: center;
+  height: 100%;
+  padding: 100px;
+
+  img {
+    flex: 1;
+    max-width: 1500px;
+    max-height: 40vh;
+    display: block;
+    object-fit: contain;
+  }
+}
+
+.login-meme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.login-form {
+  display: grid;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  input,
+  span {
+    grid-column: span 2;
+  }
+
+  span {
+    padding-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .login-message {
+    font-size: 3rem;
+  }
+}

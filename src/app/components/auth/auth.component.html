@@ -1,1 +1,13 @@
-<p>Logging in...</p>
+<div class="login-message">
+  <form class="login-form" (ngSubmit)="login()">
+    <span>Login to access Fresh Media</span>
+    <input [(ngModel)]="email" name="email" placeholder="Email" />
+    <input [(ngModel)]="password" name="password" type="password" placeholder="Password" />
+    <button type="submit" (click)="login()">Login</button>
+    <button type="button" (click)="register()">Register</button>
+  </form>
+</div>
+
+@if (message()) {
+  <p>{{ message() }}</p>
+}

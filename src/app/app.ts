@@ -1,10 +1,11 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SupabaseService } from '../supabase.service';
+import { AuthComponent } from './components/auth/auth.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AuthComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

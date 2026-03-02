@@ -159,7 +159,6 @@ $card-animation-time: 0.28s;
   margin: 5px;
   padding: 5px;
   background-color: #b2102f;
-  box-shadow: var(--shadow-low);
   opacity: 0;
   transition: all ease $card-animation-time;
 
@@ -188,13 +187,11 @@ $card-animation-time: 0.28s;
   .action-complete {
     background: rgba(8, 56, 17, 0.98);
     font-size: 0.85rem;
-    box-shadow: var(--shadow-low);
   }
 
   .action-uncomplete {
     background: rgba(56, 9, 8, 0.98);
     font-size: 0.85rem;
-    box-shadow: var(--shadow-low);
   }
 
   .episodes {

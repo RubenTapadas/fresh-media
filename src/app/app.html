@@ -13,9 +13,10 @@
   </div>
   <router-outlet />
   @if (!user()) {
+    <!-- <app-auth /> -->
     <div class="login-message">
-      <span><button (click)="loginWithGoogle()">Login</button> to acess Fresh Media</span>
-      <img src="/good_deal.gif" alt="Good Deal" />
+      <span><button (click)="loginWithGoogle()">Login</button> to access Fresh Media</span>
+      <img src="good_deal.gif" alt="Good Deal" />
     </div>
   }
 </div>

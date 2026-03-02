@@ -56,7 +56,7 @@ export class SupabaseService {
     return this.supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin + '/auth/callback', // matches your Angular callback route
+        redirectTo: window.location.origin + '/fresh-media',
       },
     });
   }

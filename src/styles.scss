@@ -45,6 +45,14 @@ button {
   cursor: pointer;
   box-shadow: var(--shadow-low);
   font-weight: 600;
+  transition:
+    box-shadow ease 0.2s,
+    transform ease 0.2s;
+
+  &:hover {
+    box-shadow: var(--shadow-high);
+    transform: scale(1.03);
+  }
 }
 
 body {

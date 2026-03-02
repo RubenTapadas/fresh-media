@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Entry } from '../media/media.model';
 import { CardComponent } from '../components/card/card.component';
-import { timeout } from 'rxjs';
 import { SupabaseService } from '../../supabase.service';
 
 interface GroupedEntry {
