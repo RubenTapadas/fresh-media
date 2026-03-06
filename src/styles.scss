@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
 * {
   margin: 0;
@@ -9,19 +11,27 @@
 }
 
 :root {
-  --font-family: 'Poppins', sans-serif;
-  --background-color: #212129;
+  --font-family: 'Figtree', sans-serif;
+  --font-family-2: 'Bebas Neue', sans-serif;
+  --font-family-3: 'Poppins', sans-serif;
+  --background-color: #181821;
   --font-color: #f5f5f5;
   --font-size: 16px;
-  --border-radius: 4px;
+  --border-radius: 8px;
   --shadow-low: 0 3px 6px rgba(0, 0, 0, 0.26), 0 3px 6px rgba(0, 0, 0, 0.33);
   --shadow-high: 0 10px 20px rgba(0, 0, 0, 0.29), 0 6px 6px rgba(0, 0, 0, 0.33);
-  --surface-color: #262630;
+  --surface-color: #111118;
+  --surface-gradient: linear-gradient(to bottom, #18181f, #111118);
   --border: 1px solid rgba(255, 255, 255, 0.04);
   --icon-movie: url('../public/movie.svg');
   --icon-series: url('../public/series.svg');
   --icon-game: url('../public/game.svg');
   --icon-book: url('../public/book.svg');
+  --icon-search: url('../public/search.svg');
+  --color-movie: #3792ba;
+  --color-series: #498f44;
+  --color-game: #9f6ed0;
+  --color-book: #cb7630;
 }
 
 img {
@@ -41,17 +51,108 @@ button {
   color: rgba(255, 255, 255, 0.87);
 }
 
+input,
+select,
+.segmented-button {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #e8e8f0;
+  background: #18181f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 9px 12px;
+
+  &.has-addon-left {
+    padding-left: 30px;
+  }
+}
+
+.addon-left {
+  margin-right: -26px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  flex-shrink: 0;
+  mask-image: var(--icon);
+  background-color: var(--font-color);
+}
+
+.segmented-button {
+  padding: 4px;
+
+  display: flex;
+  gap: 10px;
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    flex-shrink: 0;
+    mask-image: var(--icon);
+    background-color: var(--color);
+  }
+
+  button {
+    padding: 8px;
+    display: flex;
+    gap: 4px;
+    min-width: 60px;
+    justify-content: center;
+
+    &:not(.active) {
+      &,
+      &:before {
+        background: transparent;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+input[type='number'] {
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 button {
   cursor: pointer;
+  position: relative;
   box-shadow: var(--shadow-low);
   font-weight: 600;
   transition:
     box-shadow ease 0.2s,
     transform ease 0.2s;
 
+  background: #222230;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  color: var(--font-color);
+
   &:hover {
     box-shadow: var(--shadow-high);
-    transform: scale(1.03);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--surface-gradient);
+    z-index: -1;
+    border-radius: var(--border-radius);
+    outline: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -61,4 +162,108 @@ body {
   font-weight: 400;
   color: var(--font-color);
   font-size: var(--font-size);
+
+  &:before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.048;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    background-repeat: repeat;
+  }
+
+  &:after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 110% 90% at 50% 50%,
+      transparent 30%,
+      rgba(0, 0, 0, 0.35) 70%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+  }
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  div {
+    position: absolute;
+    will-change: opacity;
+  }
+
+  .bloom-a {
+    width: 70vw;
+    height: 70vw;
+    top: -20vw;
+    left: -18vw;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(100, 80, 220, 0.1) 0%,
+      rgba(100, 80, 220, 0.04) 45%,
+      transparent 70%
+    );
+    animation: breathe-a 18s ease-in-out infinite alternate;
+  }
+
+  .bloom-b {
+    width: 60vw;
+    height: 60vw;
+    bottom: -16vw;
+    right: -14vw;
+    background: radial-gradient(
+      circle,
+      rgba(220, 80, 100, 0.08) 0%,
+      rgba(220, 80, 100, 0.03) 45%,
+      transparent 70%
+    );
+    animation: breathe-b 22s ease-in-out infinite alternate;
+  }
+
+  .bloom-c {
+    width: 40vw;
+    height: 40vw;
+    top: -8vw;
+    right: -10vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(40, 160, 220, 0.06) 0%, transparent 65%);
+    animation: breathe-c 28s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes breathe-a {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes breathe-b {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes breathe-c {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0.9;
+  }
 }

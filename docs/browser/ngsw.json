@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1772384695108,
+  "timestamp": 1772616548549,
   "index": "/fresh-media/index.html",
   "assetGroups": [
     {
@@ -13,9 +13,9 @@
       "urls": [
         "/fresh-media/favicon.ico",
         "/fresh-media/index.html",
-        "/fresh-media/main-TKBECUYQ.js",
+        "/fresh-media/main-HUSNITVS.js",
         "/fresh-media/manifest.webmanifest",
-        "/fresh-media/styles-V4SUBG2Z.css"
+        "/fresh-media/styles-IUXZVGQZ.css"
       ],
       "patterns": []
     },
@@ -47,9 +47,11 @@
         "/fresh-media/media/delete-QNNBWPLS.svg",
         "/fresh-media/media/game-4WTAWKXL.svg",
         "/fresh-media/media/movie-N6XYZ3KR.svg",
+        "/fresh-media/media/search-LE3EPIAD.svg",
         "/fresh-media/media/series-LDRXW5XT.svg",
         "/fresh-media/movie.svg",
         "/fresh-media/play_lesson.svg",
+        "/fresh-media/search.svg",
         "/fresh-media/series.svg"
       ],
       "patterns": []
@@ -74,18 +76,20 @@
     "/fresh-media/icons/icon-512x512.png": "e0dee9639de40f3eb21de64f405bc86a895c5a50",
     "/fresh-media/icons/icon-72x72.png": "21337a3bbc3d3c3859dd9cad92862ec82ee41287",
     "/fresh-media/icons/icon-96x96.png": "5ad05fab811c4359c6c09d7831e3e9df220c3cda",
-    "/fresh-media/index.html": "f485111e710fd50a1ee0197dc76e1a2883e466e1",
-    "/fresh-media/main-TKBECUYQ.js": "ff766d40a6042189721aba2cc907a2c95bbf42dd",
+    "/fresh-media/index.html": "c7bd2df21f4cccd6bdecde42db7eb533d0f8e6ec",
+    "/fresh-media/main-HUSNITVS.js": "c099cdc76f66405b9d5504fc19775c0740fa3e6a",
     "/fresh-media/manifest.webmanifest": "7bbacd4dcf5a1956cd2a66346cd262704234eee6",
     "/fresh-media/media/book-XX5S4GVE.svg": "387c43cd5f0b6db0f7dc42744b25cb03a62e9c64",
     "/fresh-media/media/delete-QNNBWPLS.svg": "fd77d9dd4a978e7fa2ab935ef371ce47e30fc284",
     "/fresh-media/media/game-4WTAWKXL.svg": "a34726af15c93c2d49bfa8ce682ceae30b8d0bc7",
     "/fresh-media/media/movie-N6XYZ3KR.svg": "0d5650e64953c21b417434127f5b7a0f41aebd49",
+    "/fresh-media/media/search-LE3EPIAD.svg": "d6be84ab0981ed9a753b4b24eb1daccfc44d172e",
     "/fresh-media/media/series-LDRXW5XT.svg": "3b2e654274d12c34f008e91b95b6c051dd100103",
     "/fresh-media/movie.svg": "0d5650e64953c21b417434127f5b7a0f41aebd49",
     "/fresh-media/play_lesson.svg": "5f88a2be23063de471698de430bcc725b6cdf9da",
+    "/fresh-media/search.svg": "d6be84ab0981ed9a753b4b24eb1daccfc44d172e",
     "/fresh-media/series.svg": "3b2e654274d12c34f008e91b95b6c051dd100103",
-    "/fresh-media/styles-V4SUBG2Z.css": "dc4a566019c57e07d957084782398d6d9f0eb762"
+    "/fresh-media/styles-IUXZVGQZ.css": "799efb119244c99a31791760e7164cd3b22ef1cc"
   },
   "navigationUrls": [
     {

@@ -1,22 +1,50 @@
 <div class="page">
-  <div class="page-header">
-    <div class="header-left">
-      <h1>Fresh Media</h1>
-    </div>
-    <div class="header-right">
-      @if (user()) {
-        <button (click)="signOut()" [title]="user()?.email">Logout</button>
-      } @else {
-        <button (click)="loginWithGoogle()">Login</button>
-      }
-    </div>
-  </div>
-  <router-outlet />
-  @if (!user()) {
-    <!-- <app-auth /> -->
-    <div class="login-message">
-      <span><button (click)="loginWithGoogle()">Login</button> to access Fresh Media</span>
-      <img src="good_deal.gif" alt="Good Deal" />
+  @if (user()) {
+    <div class="page-header">
+      <div class="header-left">
+        <div class="addon-left" [style.--icon]="'var(--icon-search)'"></div>
+        <input
+          type="text"
+          class="search-input has-addon-left"
+          placeholder="Fresh Media"
+          [value]="filterService.searchString()"
+          (input)="filterService.searchString.set($any($event).target.value)"
+        />
+      </div>
+
+      <div class="segmented-button">
+        @for (type of types; track type.value) {
+          <button
+            [class.active]="filterService.searchType() === type.value"
+            [style.--icon]="'var(--icon-' + type.value + ')'"
+            [style.--color]="'var(--color-' + type.value + ')'"
+            (click)="filterService.searchType.set(type.value)"
+          >
+            @if (type.value) {
+              <div class="icon"></div>
+            }
+            <span>{{ type.label }}</span>
+          </button>
+        }
+      </div>
+
+      <div class="header-right">
+        @if (user()) {
+          <button (click)="signOut()" [title]="user()?.email">Logout</button>
+        } @else {
+          <button (click)="loginWithGoogle()">Login</button>
+        }
+      </div>
     </div>
   }
+  <div class="page-content">
+    <router-outlet />
+    @if (!user()) {
+      <!-- <app-auth /> -->
+      <div class="login-message">
+        <span><button (click)="loginWithGoogle()">Login</button> to access Fresh Media</span>
+        <img src="good_deal.gif" alt="Good Deal" />
+      </div>
+    }
+  </div>
 </div>

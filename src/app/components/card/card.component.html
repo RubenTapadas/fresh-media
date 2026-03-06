@@ -5,6 +5,7 @@
   [style.--score]="entry?.score"
   [style.--image-url]="'url(' + (entry?.image_url || '') + ')'"
   [style.--type-image]="'var(--icon-' + (entry?.type ?? 'movie') + ')'"
+  [style.--type-color]="'var(--color-' + (entry?.type ?? 'movie') + ')'"
 >
   <div class="card" [class.has-action]="hasAction()">
     @if (!entry?.image_url) {

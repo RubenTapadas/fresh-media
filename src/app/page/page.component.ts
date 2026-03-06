@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Entry } from '../media/media.model';
 import { CardComponent } from '../components/card/card.component';
 import { SupabaseService } from '../../supabase.service';
+import { FilterService } from '../services/filter.service';
 
 interface GroupedEntry {
   month: string;
@@ -23,18 +24,31 @@ interface GroupedEntry {
   imports: [CommonModule, RouterModule, FormsModule, CardComponent],
 })
 export class PageComponent implements OnInit {
+  private filterService = inject(FilterService);
   private supabaseService = inject(SupabaseService);
+
   authReady = signal(false);
   user = this.supabaseService.user;
 
   entries = signal<Entry[]>([]);
+  filteredEntries = computed<Entry[]>(() => {
+    const entries = this.entries();
+    const searchType = this.filterService.searchType();
+    const searchString = this.filterService.searchString();
+
+    return entries.filter((e) => {
+      if (searchType && e.type !== searchType) return false;
+      if (searchString && !e.title.toLowerCase().includes(searchString.toLowerCase())) return false;
+      return true;
+    });
+  });
 
   selected = signal<Partial<Entry> | null>(null);
   showPanel = signal(false);
 
-  planned = computed<Entry[]>(() => this.entries().filter((e) => !e.completed_date));
+  planned = computed<Entry[]>(() => this.filteredEntries().filter((e) => !e.completed_date));
   groupedCompleted = computed<GroupedEntry[]>(() => {
-    const all = this.entries();
+    const all = this.filteredEntries();
     const completed = all.filter((e) => e.completed_date);
     completed.sort(
       (a, b) => new Date(b.completed_date!).getTime() - new Date(a.completed_date!).getTime(),
@@ -67,7 +81,7 @@ export class PageComponent implements OnInit {
       const [year, month] = key.split('-');
       const currentYear = parseInt(year);
       const prevYear = index > 0 ? parseInt(Object.keys(groups)[index - 1].split('-')[0]) : null;
-      const yearChanged = prevYear !== null && prevYear !== currentYear;
+      const yearChanged = prevYear !== currentYear;
       return {
         month: monthNames[parseInt(month)],
         year: currentYear,
