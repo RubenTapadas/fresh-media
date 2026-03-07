@@ -22,7 +22,7 @@
           @if (hasAction() && entry?.current_episode !== 0) {
             <button type="button" (click)="episodeStep.emit(-1); $event.stopPropagation()"></button>
           }
-          <span>{{ entry?.current_episode }} / {{ entry?.total_episodes }}</span>
+          <span>{{ entry?.current_episode ?? 0 }} / {{ entry?.total_episodes }}</span>
           @if (hasAction() && entry?.current_episode !== entry?.total_episodes) {
             <button type="button" (click)="episodeStep.emit(1); $event.stopPropagation()"></button>
           }
