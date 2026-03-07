@@ -6,10 +6,7 @@ import { Entry } from '../media/media.model';
 import { CardComponent } from '../components/card/card.component';
 import { SupabaseService } from '../../supabase.service';
 import { FilterService } from '../services/filter.service';
-import {
-  WikipediaSearchService,
-  WikiSearchResult,
-} from '../services/wikipedia-search.service';
+import { WikipediaSearchService, WikiSearchResult } from '../services/wikipedia-search.service';
 
 interface GroupedEntry {
   month: string;
@@ -43,7 +40,8 @@ export class PageComponent implements OnInit {
 
     return entries.filter((e) => {
       if (searchType && e.type !== searchType) return false;
-      if (searchString && !e.title.toLowerCase().includes(searchString.toLowerCase())) return false;
+      if (searchString && !e.title?.toLowerCase().includes(searchString.toLowerCase()))
+        return false;
       return true;
     });
   });
@@ -207,8 +205,7 @@ export class PageComponent implements OnInit {
     const summary = await this.wikiSearch.getPageSummary(result.title);
     this.wikiSearch.clearResults();
     if (!summary) return;
-    const imageUrl =
-      summary.thumbnail?.source ?? summary.originalimage?.source ?? undefined;
+    const imageUrl = summary.thumbnail?.source ?? summary.originalimage?.source ?? undefined;
     this.selected.update((s) =>
       s
         ? {
