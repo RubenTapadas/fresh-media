@@ -6,6 +6,10 @@ import { Entry } from '../media/media.model';
 import { CardComponent } from '../components/card/card.component';
 import { SupabaseService } from '../../supabase.service';
 import { FilterService } from '../services/filter.service';
+import {
+  WikipediaSearchService,
+  WikiSearchResult,
+} from '../services/wikipedia-search.service';
 
 interface GroupedEntry {
   month: string;
@@ -26,6 +30,7 @@ interface GroupedEntry {
 export class PageComponent implements OnInit {
   private filterService = inject(FilterService);
   private supabaseService = inject(SupabaseService);
+  wikiSearch = inject(WikipediaSearchService);
 
   authReady = signal(false);
   user = this.supabaseService.user;
@@ -188,6 +193,31 @@ export class PageComponent implements OnInit {
     }
 
     this.selected.update((s) => (s ? { ...s, [field]: value } : s));
+
+    if (field === 'title' && typeof value === 'string') {
+      this.wikiSearch.setQuery(value);
+    }
+  }
+
+  onTitleSearchBlur(): void {
+    setTimeout(() => this.wikiSearch.clearResults(), 150);
+  }
+
+  async selectWikiResult(result: WikiSearchResult): Promise<void> {
+    const summary = await this.wikiSearch.getPageSummary(result.title);
+    this.wikiSearch.clearResults();
+    if (!summary) return;
+    const imageUrl =
+      summary.thumbnail?.source ?? summary.originalimage?.source ?? undefined;
+    this.selected.update((s) =>
+      s
+        ? {
+            ...s,
+            title: summary.title,
+            image_url: imageUrl ?? s.image_url,
+          }
+        : s,
+    );
   }
 
   actionEdit(): void {
@@ -202,6 +232,7 @@ export class PageComponent implements OnInit {
 
   clearPanel(): void {
     this.showPanel.set(false);
+    this.wikiSearch.clearResults();
     setTimeout(() => this.selected.set(null), 300);
   }
 

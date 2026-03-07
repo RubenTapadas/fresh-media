@@ -89,11 +89,32 @@
     </div>
     <div class="form">
       <label>Title</label>
-      <input
-        class="title-input"
-        [value]="selected()?.title || ''"
-        (input)="updateSelected('title', $any($event.target).value)"
-      />
+      <div class="title-search-wrap">
+        <input
+          class="title-input"
+          [value]="selected()?.title || ''"
+          (input)="updateSelected('title', $any($event.target).value)"
+          (blur)="onTitleSearchBlur()"
+        />
+        @if (wikiSearch.isLoading()) {
+          <span class="wiki-loading">Searching…</span>
+        }
+        @if (wikiSearch.isSummaryLoading()) {
+          <span class="wiki-loading">Loading…</span>
+        }
+        @if (wikiSearch.searchResults().length) {
+          <ul class="wiki-results">
+            @for (item of wikiSearch.searchResults(); track item.pageid) {
+              <li
+                (mousedown)="$event.preventDefault()"
+                (click)="selectWikiResult(item)"
+              >
+                {{ item.title }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
 
       <label>Type</label>
       <select
