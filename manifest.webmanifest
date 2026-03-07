@@ -1,7 +1,9 @@
 {
-  "name": "fresh-media",
-  "short_name": "fresh-media",
+  "name": "Fresh Media",
+  "short_name": "Fresh Media",
   "display": "standalone",
+  "theme_color": "#181821",
+  "background_color": "#181821",
   "scope": "./",
   "start_url": "./",
   "icons": [
